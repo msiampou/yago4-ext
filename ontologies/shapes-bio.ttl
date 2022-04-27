@@ -1,0 +1,192 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix ys: <http://yago-knowledge.org/schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wpq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix bioschema: <http://bioschemas.org/> .
+
+_:genid1 a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/ns/shacl#datatype
+
+sh:datatype a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/shacl#maxCount
+
+sh:maxCount a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/shacl#node
+
+sh:node a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/shacl#path
+
+sh:path a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/shacl#pattern
+
+sh:pattern a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/shacl#property
+
+sh:property a owl:AnnotationProperty .
+# 
+# http://yago-knowledge.org/schema#fromClass
+
+ys:fromClass a owl:AnnotationProperty .
+# 
+# http://yago-knowledge.org/schema#fromProperty
+
+ys:fromProperty a owl:AnnotationProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/ns/shacl#NodeShape
+
+sh:NodeShape a owl:Class .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://bioschemas.org/BioChemEntity
+
+bioschema:BioChemEntity a owl:NamedIndividual , sh:NodeShape ;
+	sh:property _:genid2 .
+
+_:genid2 sh:node schema:Thing ;
+	sh:path bioschema:isLocatedInSubcellularLocation ;
+	ys:fromProperty wdt:P681 .
+
+bioschema:BioChemEntity sh:property _:genid3 .
+
+_:genid3 sh:node schema:Thing ;
+	sh:path bioschema:isInvolvedInBiologicalProcess ;
+	ys:fromProperty wdt:P682 .
+
+bioschema:BioChemEntity sh:property _:genid4 .
+
+_:genid4 sh:node bioschema:Gene ;
+	sh:path bioschema:isEncodedByBioChemEntity ;
+	ys:fromProperty wdt:P702 .
+
+bioschema:BioChemEntity sh:property _:genid5 .
+
+_:genid5 sh:node schema:Thing ;
+	sh:path bioschema:hasMolecularFunction ;
+	ys:fromProperty wdt:P680 .
+
+bioschema:BioChemEntity sh:property _:genid6 .
+
+_:genid6 sh:node bioschema:BioChemEntity ;
+	sh:path bioschema:bioChemInteraction ;
+	ys:fromProperty wdt:P769 .
+# 
+# http://bioschemas.org/ChemicalSubstance
+
+bioschema:ChemicalSubstance a owl:NamedIndividual , sh:NodeShape ;
+	ys:fromClass wd:Q79529 .
+# 
+# http://bioschemas.org/Gene
+
+bioschema:Gene a owl:NamedIndividual , sh:NodeShape ;
+	sh:property _:genid7 .
+
+_:genid7 sh:node schema:Thing ;
+	sh:path bioschema:expressedIn ;
+	ys:fromProperty wdt:P5572 .
+
+bioschema:Gene sh:property _:genid8 .
+
+_:genid8 sh:node bioschema:BioChemEntity ;
+	sh:path bioschema:encodesBioChemEntity ;
+	ys:fromProperty wdt:P688 .
+
+bioschema:Gene ys:fromClass wd:Q7187 .
+# 
+# http://bioschemas.org/MolecularEntity
+
+bioschema:MolecularEntity a owl:NamedIndividual , sh:NodeShape ;
+	sh:property _:genid9 .
+
+_:genid9 sh:datatype xsd:string ;
+	sh:maxCount "1"^^xsd:integer ;
+	sh:path bioschema:inChIKey ;
+	sh:pattern "^[A-Z]{14}-[A-Z]{10}-[A-Z]$" ;
+	ys:fromProperty wdt:P235 .
+
+bioschema:MolecularEntity sh:property _:genid10 .
+
+_:genid10 sh:datatype xsd:string ;
+	sh:maxCount "1"^^xsd:integer ;
+	sh:path bioschema:inChI ;
+	sh:pattern "^1S/([0-9]*[A-Z][ub]?[a-z]?[0-9]*\\.?)+(/[0-9A-Za-z+\\-(),.*;?]+)*$" ;
+	ys:fromProperty wdt:P234 .
+
+bioschema:MolecularEntity sh:property _:genid11 .
+
+_:genid11 sh:datatype xsd:string ;
+	sh:maxCount "1"^^xsd:integer ;
+	sh:path bioschema:molecularFormula ;
+	ys:fromProperty wdt:P274 .
+
+bioschema:MolecularEntity sh:property _:genid12 .
+
+_:genid12 sh:datatype xsd:string ;
+	sh:path bioschema:smiles ;
+	sh:pattern "^[A-Za-z0-9+\\-\\*=#$:().>/\\\\\\[\\]%]+$" ;
+	ys:fromProperty wdt:P233 .
+
+bioschema:MolecularEntity ys:fromClass wd:Q2393187 .
+# 
+# http://bioschemas.org/Protein
+
+bioschema:Protein a owl:NamedIndividual , sh:NodeShape ;
+	ys:fromClass wd:Q8054 .
+# 
+# http://bioschemas.org/Taxon
+
+bioschema:Taxon a owl:NamedIndividual , sh:NodeShape ;
+	sh:property _:genid13 .
+
+_:genid13 sh:maxCount "1"^^xsd:integer ;
+	sh:node schema:Thing ;
+	sh:path bioschema:taxonRank ;
+	ys:fromProperty wdt:P105 .
+
+bioschema:Taxon sh:property _:genid14 .
+
+_:genid14 sh:node bioschema:Taxon ;
+	sh:path bioschema:parentTaxon ;
+	ys:fromProperty wdt:P171 .
+
+bioschema:Taxon ys:fromClass wd:Q16521 .
+# 
+# Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
