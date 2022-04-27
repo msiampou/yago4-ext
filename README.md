@@ -1,1 +1,1 @@
-# yago4-ext
+# YAGO4 - Extension
