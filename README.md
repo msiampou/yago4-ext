@@ -6,7 +6,7 @@
 - YAGO: The YAGO4 knowledge base can be found here: https://yago-knowledge.org/downloads/yago-4.
 - GAG: The dataset of the Greek Administration Geography can be found at `data/GAG.tar.xz`.  
 
-To extract the desired data from the YAGO4 knowledge base the bash scripts under the file `scripts` were utilized. The extracted files can be found at `data/YAGO4_extracted.tar.xz`.
+To extract the desired data from the YAGO4 knowledge base the bash scripts under the `scripts` directory were utilized. The extracted files can be found at `data/YAGO4_extracted.tar.xz`.
 
 #### Extended Ontology
 
