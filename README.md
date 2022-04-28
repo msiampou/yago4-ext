@@ -1,6 +1,7 @@
 # YAGO4 - Extension
 
 ### Files overview
+
 #### Datasets
 
 - YAGO: The YAGO4 knowledge base can be found here: https://yago-knowledge.org/downloads/yago-4.
@@ -15,6 +16,7 @@ The extended version of the YAGO4 ontology can be found at `ontologies/ontology-
 #### Entities Extension
 
 The code corresponding to entities extension can be foundat `extension-example/entities-extension.ipynb`
+
 
 ### Publication
 
